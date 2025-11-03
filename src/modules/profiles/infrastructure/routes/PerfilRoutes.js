@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const perfilSchema = require("../models/perfilModel");
+const perfilSchema = require("../../domain/perfilModel");
 
 // Crear perfil académico
 router.post("/perfil", (req, res) => {
