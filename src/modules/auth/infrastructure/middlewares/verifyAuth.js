@@ -1,6 +1,6 @@
-const jwtService = require("../../application/jwtService")
+const { verifyToken } = require("../../application/jwtService")
 
-const verifyToken = (req, res, next) => {
+const verifyTokens = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
     }
 
     try{
-        const decoded = jwtService.verifyToken(token);
+        const decoded = verifyToken(token);
         req.user = decoded;
         next();
     }catch (error) {
@@ -17,4 +17,4 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-module.exports = verifyToken;
+module.exports = verifyTokens;
